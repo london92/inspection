@@ -29,8 +29,8 @@ class InspectionEdit extends Component {
     }
 
     _onTextSchedule(){
-        const { phone, car } = this.props;
-        Communication.text(phone, `Your car is ${car}`);
+        const { phone, car, model } = this.props;
+        Communication.text(phone, `Your car is ${car} ${model}`);
     }
 
     _onAccept(){
@@ -53,7 +53,7 @@ class InspectionEdit extends Component {
                 </CardSection>
                 <CardSection>
                     <Button onPress={this._onTextSchedule.bind(this)}>
-                        Text Schedule
+                        Send Message
                     </Button>
                 </CardSection>
 
