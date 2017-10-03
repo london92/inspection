@@ -45,7 +45,12 @@ const styles = StyleSheet.create({
     },
     rightButtonStyle: {
         color: '#fff',
-        marginRight: 15
+        marginRight: 15,
+        paddingLeft: 15,
+        alignItems:'center',
+        borderLeftWidth: 1,
+        borderLeftColor: '#e8e5cc',
+        height: 26
     }
 });
 
