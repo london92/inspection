@@ -1,7 +1,19 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 
-import { INSPECTION_UPDATE, INSPECTION_CREATE, INSPECTIONS_FETCH_SUCCESS, INSPECTION_SAVED_SUCCESS } from './types';
+import {
+    INSPECTION_UPDATE,
+    INSPECTION_CREATE,
+    INSPECTIONS_FETCH_SUCCESS,
+    INSPECTION_SAVED_SUCCESS,
+    CLEAR_INSPECTION
+    } from './types';
+
+export const clearInspection = () => {
+    return {
+        type: CLEAR_INSPECTION
+    }
+};
 
 export const inspectionUpdate = ({ prop, value }) => {
     return {
@@ -10,10 +22,10 @@ export const inspectionUpdate = ({ prop, value }) => {
     }
 };
 
-export const inspectionCreate = ({ name, phone, car }) => {
+export const inspectionCreate = ({ name, phone, car, model }) => {
     const { currentUser } = firebase.auth();
     return (dispatch) => {
-        firebase.database().ref(`/users/${currentUser.uid}/inspections`).push({ name, phone, car })
+        firebase.database().ref(`/users/${currentUser.uid}/inspections`).push({ name, phone, car, model })
             .then(() => {
             dispatch({ type: INSPECTION_CREATE });
             Actions.inspectionList({ type: 'reset' })
