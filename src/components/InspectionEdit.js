@@ -24,8 +24,8 @@ class InspectionEdit extends Component {
     }
 
     _onPress(){
-        const { name, phone, car } = this.props;
-        this.props.inspectionSave({ name, phone, car, uid: this.props.inspection.uid })
+        const { name, phone, car, model } = this.props;
+        this.props.inspectionSave({ name, phone, car, model, uid: this.props.inspection.uid })
     }
 
     _onTextSchedule(){
@@ -77,13 +77,14 @@ InspectionEdit.propTypes = {
     name: PropTypes.string,
     phone: PropTypes.string,
     car: PropTypes.string,
+    model: PropTypes.string,
     inspectionSave: PropTypes.func,
     inspectionDecline: PropTypes.func
 };
 
 const mapStateToProps = state => {
-    const { name, phone, car } = state.inspectionForm;
-    return { name, phone, car }
+    const { name, phone, car, model } = state.inspectionForm;
+    return { name, phone, car, model }
 };
 
 export default connect(mapStateToProps, { inspectionUpdate, inspectionSave, inspectionDecline })(InspectionEdit);

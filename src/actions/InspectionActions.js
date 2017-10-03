@@ -45,10 +45,10 @@ export const inspectionsFetch = () => {
   }
 };
 
-export const inspectionSave = ({ name, phone, car, uid }) => {
+export const inspectionSave = ({ name, phone, car, model, uid }) => {
     const { currentUser } = firebase.auth();
     return (dispatch) => {
-        firebase.database().ref(`/users/${currentUser.uid}/inspections/${uid}`).set({ name, phone, car })
+        firebase.database().ref(`/users/${currentUser.uid}/inspections/${uid}`).set({ name, phone, car, model })
             .then(() => {
                 dispatch({ type: INSPECTION_SAVED_SUCCESS });
                 Actions.inspectionList({ type: 'reset' })
