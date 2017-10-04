@@ -17,7 +17,7 @@ Below you'll find information about performing common tasks. The most recent ver
 3. Move to the project folder.
 4. run `npm install`.
 5. run `npm start`.
-6. Catch QR code printed in terminal window with Expo app.
+6. Scan QR code printed in terminal window with Expo app or pass URL address.
 7. Application should launch on your device.
 
 
