@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Alert } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 import { Card, CardSection, Button } from './common';
 import { inspectionUpdate, inspectionCreate, clearInspection } from '../actions';
@@ -11,9 +13,37 @@ class InspectionCreate extends Component {
         this.props.clearInspection();
     }
 
+    _validate( { name, phone, car, model } ){
+        let response = { valid: false, message: ''};
+
+        if( name.length == 0 )
+            response.message = response.message + 'Fill Name field! ';
+        if( phone.length == 0 )
+            response.message = response.message + 'Fill Telephone field! ';
+        if( car.length == 0 )
+            response.message = response.message + 'Fill Brand field! ';
+        if( model.length == 0 )
+            response.message = response.message + 'Fill Model field! ';
+        if(response.message.length == 0 )
+            response.valid = true;
+
+        return response;
+    }
+
     _onPress(){
         const { name, phone, car, model } = this.props;
-        this.props.inspectionCreate({ name, phone, car, model })
+        let validation = this._validate( { name, phone, car, model } );
+
+        if(validation.valid){
+            this.props.inspectionCreate({ name, phone, car, model })
+        }
+        else {
+            Alert.alert('Validation Error!', validation.message,[
+                {text: 'OK', onPress: () => true},
+                {text: 'Quit', onPress: () => Actions.inspectionList(), style: 'cancel'}
+            ],{cancelable: false})
+        }
+
     }
 
     render(){
