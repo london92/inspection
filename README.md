@@ -13,7 +13,7 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## How to setup?
 1. Install [Expo application](https://expo.io/) on your device([Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=ru), [iTunes](https://itunes.apple.com/us/app/expo-client/id982107779?mt=8)).
-2. Clone or download project from[repository](https://github.com/london92/inspection).
+2. Clone or download project from [repository](https://github.com/london92/inspection).
 3. Move to the project folder.
 4. run `npm install`.
 5. run `npm start`.
